@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rock Paper Scissors ✊✋✌️</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: radial-gradient(circle, #181818, #000);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: #00ffe5;
+      text-shadow: 0 0 10px #00ffe5;
+    }
+
+    .choices {
+      margin: 30px 0;
+    }
+
+    button.choice {
+      font-size: 2rem;
+      margin: 10px;
+      padding: 20px 30px;
+      border: none;
+      border-radius: 15px;
+      background: #222;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 0 10px #00ffe5;
+      transition: 0.3s;
+    }
+
+    button.choice:hover {
+      background: #00ffe5;
+      color: black;
+      box-shadow: 0 0 20px #00ffe5;
+    }
+
+    .result {
+      font-size: 1.5rem;
+      margin-top: 30px;
+    }
+
+    .result span {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    .footer {
+      margin-top: 50px;
+      font-size: 0.8rem;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <h1>Rock ✊ Paper ✋ Scissors ✌️</h1>
+  
+  <div class="choices">
+    <button class="choice" onclick="play('rock')">✊ Rock</button>
+    <button class="choice" onclick="play('paper')">✋ Paper</button>
+    <button class="choice" onclick="play('scissors')">✌️ Scissors</button>
+  </div>
+
+  <div class="result" id="result">
+    <span>Make your move!</span>
+  </div>
+
+  <div class="footer">
+    © 2025 by Lassas76 – 100% Original. No templates. No plagiarism.
+  </div>
+
+  <script>
+    function play(player) {
+      const choices = ['rock', 'paper', 'scissors'];
+      const emojis = { rock: '✊', paper: '✋', scissors: '✌️' };
+      const computer = choices[Math.floor(Math.random() * 3)];
+
+      let resultText = `You: ${emojis[player]} vs Computer: ${emojis[computer]}`;
+
+      if (player === computer) {
+        resultText += "<br><span>It's a draw!</span>";
+      } else if (
+        (player === 'rock' && computer === 'scissors') ||
+        (player === 'paper' && computer === 'rock') ||
+        (player === 'scissors' && computer === 'paper')
+      ) {
+        resultText += "<br><span>You win! 🎉</span>";
+      } else {
+        resultText += "<br><span>Computer wins! 🤖</span>";
+      }
+
+      document.getElementById('result').innerHTML = resultText;
+    }
+  </script>
+</body>
+</html>
